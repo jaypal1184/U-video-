@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>U VIDEO</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      margin-bottom: 60px;
+      overflow-x: hidden;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background-color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff0000;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      font-size: 32px;
+      color: #000;
+    }
+
+    .search-container {
+      flex-grow: 1;
+      margin: 0 16px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 8px 40px 8px 12px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 12px;
+      top: 8px;
+      font-size: 24px;
+      color: #888;
+    }
+
+    .notification-btn {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .notification-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: red;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 10px;
+    }
+
+    .categories {
+      display: flex;
+      overflow-x: auto;
+      background-color: #fff;
+      padding: 12px;
+      gap: 10px;
+      box-shadow: inset 0 -1px 0 #ddd;
+    }
+
+    .categories::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category {
+      padding: 6px 14px;
+      background: #eee;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .category.active {
+      background-color: #000;
+      color: white;
+    }
+
+    .videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+      padding: 16px;
+    }
+
+    .video-card {
+      background-color: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+
+    .video-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .video-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+
+    .video-info {
+      padding: 10px;
+    }
+
+    .video-title {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .video-meta {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      z-index: 100;
+    }
+
+    .nav-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #666;
+      text-decoration: none;
+      font-size: 10px;
+    }
+
+    .nav-btn span {
+      font-size: 22px;
+      margin-bottom: 2px;
+    }
+
+    .nav-btn.active {
+      color: #ff0000;
+    }
+
+    .profile-img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo"><span>U</span> VIDEO</div>
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="Search...">
+      <span class="material-icons search-icon">search</span>
+    </div>
+    <div class="notification-btn">
+      <span class="material-icons">notifications</span>
+      <span class="notification-badge">3</span>
+    </div>
+  </header>
+
+  <div class="categories">
+    <div class="category active">All</div>
+    <div class="category">Motivation</div>
+    <div class="category">News</div>
+    <div class="category">Comedy</div>
+    <div class="category">Monetization</div>
+    <div class="category">Travel</div>
+    <div class="category">Vlog</div>
+    <div class="category">Earning</div>
+    <div class="category">Sports</div>
+    <div class="category">Gaming</div>
+    <div class="category">Cartoon</div>
+    <div class="category">Story</div>
+    <div class="category">Podcast</div>
+    <div class="category">Film</div>
+  </div>
+
+  <div class="videos" id="videos">
+    <!-- Video cards will be loaded via JS from Firebase -->
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="#" class="nav-btn active">
+      <span class="material-icons">home</span>
+      Home
+    </a>
+    <a href="shorts.html" class="nav-btn">
+      <span class="material-icons">smart_display</span>
+      Shorts
+    </a>
+    <a href="upload.html" class="nav-btn">
+      <span class="material-icons">add_circle</span>
+      Upload
+    </a>
+    <a href="subscriptions.html" class="nav-btn">
+      <span class="material-icons">subscriptions</span>
+      Subscriptions
+    </a>
+    <a href="profile.html" class="nav-btn">
+      <img id="profilePic" src="https://i.ibb.co/0Z1Yt9W/profile-pic.png" class="profile-img" alt="Profile">
+      Profile
+    </a>
+  </nav>
+
+  <script>
+    // Later: Add Firebase Auth logic to load profile image if signed in
+    // Example:
+    // firebase.auth().onAuthStateChanged(user => {
+    //   if (user && user.photoURL) {
+    //     document.getElementById('profilePic').src = user.photoURL;
+    //   }
+    // });
+  </script>
+</body>
+</html>
