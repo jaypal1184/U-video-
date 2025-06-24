@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shorts - U VIDEO</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background-color: black;
+      color: white;
+      overflow: hidden;
+      margin-bottom: 60px;
+    }
+
+    .shorts-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .actions {
+      position: absolute;
+      right: 10px;
+      bottom: 120px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .actions .material-icons,
+    .actions img {
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .music-info {
+      position: absolute;
+      bottom: 90px;
+      left: 16px;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .channel-info {
+      position: absolute;
+      bottom: 60px;
+      left: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .channel-info img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .channel-name {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .subscribe-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.2);
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      z-index: 100;
+    }
+
+    .nav-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #666;
+      text-decoration: none;
+      font-size: 10px;
+    }
+
+    .nav-btn span {
+      font-size: 22px;
+      margin-bottom: 2px;
+    }
+
+    .nav-btn.active {
+      color: red;
+    }
+
+    .profile-img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="shorts-container">
+    <video src="your-video-url.mp4" autoplay muted loop></video>
+
+    <div class="actions">
+      <span class="material-icons">thumb_up</span>
+      <span class="material-icons">thumb_down</span>
+      <span class="material-icons">comment</span>
+      <span class="material-icons">share</span>
+      <span class="material-icons">music_note</span>
+    </div>
+
+    <div class="music-info">@ChannelName • Original Sound</div>
+
+    <div class="channel-info">
+      <img src="https://i.ibb.co/0Z1Yt9W/profile-pic.png" alt="profile"/>
+      <span class="channel-name">@ChannelName</span>
+      <button class="subscribe-btn">Subscribe</button>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-btn">
+      <span class="material-icons">home</span>
+      Home
+    </a>
+    <a href="shorts.html" class="nav-btn active">
+      <span class="material-icons">smart_display</span>
+      Shorts
+    </a>
+    <a href="upload.html" class="nav-btn">
+      <span class="material-icons">add_circle</span>
+      Upload
+    </a>
+    <a href="subscriptions.html" class="nav-btn">
+      <span class="material-icons">subscriptions</span>
+      Subscriptions
+    </a>
+    <a href="profile.html" class="nav-btn">
+      <img src="https://i.ibb.co/0Z1Yt9W/profile-pic.png" class="profile-img" alt="Profile"/>
+      Profile
+    </a>
+  </nav>
+
+</body>
+</html>
