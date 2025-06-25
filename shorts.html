@@ -24,10 +24,8 @@
       position: relative;
       width: 100%;
       height: 100vh;
+      overflow: hidden;
       background-color: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
     video {
@@ -38,27 +36,41 @@
 
     .actions {
       position: absolute;
-      right: 10px;
-      bottom: 120px;
+      right: 16px;
+      bottom: 140px;
       display: flex;
       flex-direction: column;
       gap: 20px;
       align-items: center;
+      z-index: 10;
     }
 
-    .actions .material-icons,
-    .actions img {
-      font-size: 28px;
+    .actions .material-icons {
+      font-size: 30px;
       color: white;
       cursor: pointer;
     }
 
+    .video-title {
+      position: absolute;
+      bottom: 130px;
+      left: 16px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      z-index: 10;
+      max-width: 80%;
+      line-height: 1.4;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    }
+
     .music-info {
       position: absolute;
-      bottom: 90px;
+      bottom: 105px;
       left: 16px;
       font-size: 14px;
       color: #ccc;
+      z-index: 10;
     }
 
     .channel-info {
@@ -68,11 +80,12 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      z-index: 10;
     }
 
     .channel-info img {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       object-fit: cover;
     }
@@ -86,9 +99,9 @@
       background-color: red;
       color: white;
       border: none;
-      padding: 6px 10px;
+      padding: 6px 12px;
       border-radius: 20px;
-      font-size: 12px;
+      font-size: 13px;
       cursor: pointer;
     }
 
@@ -137,6 +150,7 @@
   <div class="shorts-container">
     <video src="your-video-url.mp4" autoplay muted loop></video>
 
+    <!-- Right side action buttons -->
     <div class="actions">
       <span class="material-icons">thumb_up</span>
       <span class="material-icons">thumb_down</span>
@@ -145,8 +159,13 @@
       <span class="material-icons">music_note</span>
     </div>
 
+    <!-- Video Title -->
+    <div class="video-title">ये वीडियो आपकी सोच बदल सकती है। अभी देखें!</div>
+
+    <!-- Music info -->
     <div class="music-info">@ChannelName • Original Sound</div>
 
+    <!-- Channel info with profile + name + subscribe -->
     <div class="channel-info">
       <img src="https://i.ibb.co/0Z1Yt9W/profile-pic.png" alt="profile"/>
       <span class="channel-name">@ChannelName</span>
@@ -154,6 +173,7 @@
     </div>
   </div>
 
+  <!-- Bottom Navigation -->
   <nav class="bottom-nav">
     <a href="index.html" class="nav-btn">
       <span class="material-icons">home</span>
